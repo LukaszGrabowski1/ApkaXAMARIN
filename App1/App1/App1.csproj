@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="2.5.0.122203" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\MonumentDetailPage.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>MonumentDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\MonumentsPage.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>MonumentsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\MainPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\NewMonumentPage.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>NewMonumentPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+</Project>
