@@ -1,6 +1,8 @@
 ﻿using System;
 
 using App1.Models;
+using App1.Views;
+using Xamarin.Forms;
 
 namespace App1.ViewModels
 {

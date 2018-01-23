@@ -12,26 +12,36 @@ namespace App1.Views
 	public partial class MonumentDetailPage : ContentPage
 	{
         MonumentDetailViewModel viewModel;
+        public Monument Monument { get; set; }
 
         public MonumentDetailPage(MonumentDetailViewModel viewModel)
         {
-            InitializeComponent();
+                InitializeComponent();
 
             BindingContext = this.viewModel = viewModel;
+            this.Monument = viewModel.Monument;
         }
 
         public MonumentDetailPage()
         {
             InitializeComponent();
 
-            var monument = new Monument
-            {
-                Location = "Monument 1",
-                Description = "This is an monument description."
-            };
+            Monument = new Monument();
 
-            viewModel = new MonumentDetailViewModel(monument);
+            viewModel = new MonumentDetailViewModel(Monument);
             BindingContext = viewModel;
+        }
+
+        void EditMonument_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        async void DeleteMonument_Clicked(object sender, EventArgs s)
+        {
+            Console.WriteLine("COUNT:" + App.Current.MainPage.Navigation.ModalStack.Count);
+            MessagingCenter.Send(this, "DeleteMonument", Monument);
+            await Navigation.PopAsync();
         }
     }
 }

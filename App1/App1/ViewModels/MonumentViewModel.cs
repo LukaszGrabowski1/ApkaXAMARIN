@@ -27,6 +27,19 @@ namespace App1.ViewModels
                 Monuments.Add(_monument);
                 await DataStore.AddMonumentAsync(_monument);
             });
+
+            MessagingCenter.Subscribe<MonumentDetailPage, Monument>(this, "DeleteMonument", async (obj, monument) =>
+            {
+                try
+                {
+                    var _monument = monument as Monument;
+                    Monuments.Remove(_monument);
+                    await DataStore.DeleteMonumentAsync(_monument);
+                }catch(Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+            });
         }
 
         async Task ExecuteLoadMonumentsCommand()

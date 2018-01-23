@@ -3,12 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="App1.Views.MonumentDetailPage"
              Title="{Binding Title}">
-    <StackLayout Spacing="20" Padding="15">
-        <Label Text="Nazwa:" FontSize="Medium" />
-        <Label Text="{Binding Monument.Name}" FontSize="Small"/>
-        <Label Text="Lokalizacja:" FontSize="Medium" />
-        <Label Text="{Binding Monument.Location}" FontSize="Small"/>
-        <Label Text="Opis:" FontSize="Medium" />
-        <Label Text="{Binding Monument.Loaction}" FontSize="Small"/>
-    </StackLayout>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edytuj" Clicked="EditMonument_Clicked" />
+        <ToolbarItem Text="Usuń" Clicked="DeleteMonument_Clicked" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Spacing="20" Padding="15">
+            <Label Text="Nazwa:" FontSize="Medium" />
+            <Label Text="{Binding Monument.Name}" FontSize="Small"/>
+            <Label Text="Lokalizacja:" FontSize="Medium" />
+            <Label Text="{Binding Monument.Location}" FontSize="Small"/>
+            <Label Text="Opis:" FontSize="Medium" />
+            <Label Text="{Binding Monument.Description}" FontSize="Small"/>
+        </StackLayout>
+        </ContentPage.Content>
 </ContentPage>

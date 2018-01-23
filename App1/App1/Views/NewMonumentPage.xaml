@@ -4,7 +4,7 @@
              x:Class="App1.Views.NewMonumentPage"
 		     Title="Nowy zabytek">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Save" Clicked="Save_Clicked" />
+        <ToolbarItem Text="Zapisz" Clicked="Save_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>

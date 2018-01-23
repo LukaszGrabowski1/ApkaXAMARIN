@@ -36,5 +36,21 @@ namespace App1
             }
             return monuments;
         }
+
+        public static bool Delete(Monument monument)
+        {
+            
+            using (var conn = new SQLite.SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "monument.db")))
+            {
+                if (conn.Delete(monument) != 0)
+                {
+                    Console.WriteLine("Success");
+                    return true;
+                }
+
+            }
+            Console.WriteLine("FAIL");
+            return false;
+        }
     }
 }
