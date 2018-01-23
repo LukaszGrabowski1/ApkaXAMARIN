@@ -14,26 +14,14 @@ namespace App1.Services
 
         public MockDataStore()
         {
-            monuments = new List<Monument>();
-            var mockMonuments = new List<Monument>
-            {
-                new Monument { Id = Guid.NewGuid().ToString(), Name = "First Monument", Description="This is an Monument description.", Location = "lokalizacja" },
-                new Monument { Id = Guid.NewGuid().ToString(), Name = "Second Monument", Description="This is an Monument description.", Location = "lokaliazcja"},
-                new Monument { Id = Guid.NewGuid().ToString(), Name = "Third Monument", Description="This is an Monument description." , Location = "lokalizacja"},
-                new Monument { Id = Guid.NewGuid().ToString(), Name = "Fourth Monument", Description="This is an Monument description.", Location = "lokalizacja" },
-                new Monument { Id = Guid.NewGuid().ToString(), Name = "Fifth Monument", Description="This is an Monument description." , Location = "lokalizacja"},
-                new Monument { Id = Guid.NewGuid().ToString(), Name = "Sixth Monument", Description="This is an Monument description.", Location = "lokalizacja" },
-            };
+            monuments = DatabaseHelper.GetAll();
 
-            foreach (var Monument in mockMonuments)
-            {
-                monuments.Add(Monument);
-            }
         }
 
         public async Task<bool> AddMonumentAsync(Monument Monument)
         {
             monuments.Add(Monument);
+            DatabaseHelper.Insert(ref Monument);
 
             return await Task.FromResult(true);
         }
@@ -55,7 +43,7 @@ namespace App1.Services
             return await Task.FromResult(true);
         }
 
-        public async Task<Monument> GetMonumentAsync(string id)
+        public async Task<Monument> GetMonumentAsync(int id)
         {
             return await Task.FromResult(monuments.FirstOrDefault(s => s.Id == id));
         }

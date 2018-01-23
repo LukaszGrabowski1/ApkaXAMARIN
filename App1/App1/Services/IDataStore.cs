@@ -9,7 +9,7 @@ namespace App1.Services
         Task<bool> AddMonumentAsync(T item);
         Task<bool> UpdateMonumentAsync(T item);
         Task<bool> DeleteMonumentAsync(T item);
-        Task<T> GetMonumentAsync(string id);
+        Task<T> GetMonumentAsync(int id);
         Task<IEnumerable<T>> GetMonumentsAsync(bool forceRefresh = false);
     }
 }
