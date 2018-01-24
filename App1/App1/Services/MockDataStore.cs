@@ -31,23 +31,17 @@ namespace App1.Services
             var _monument = monuments.Where((Monument arg) => arg.Id == monument.Id).FirstOrDefault();
             monuments.Remove(_monument);
             monuments.Add(monument);
+            DatabaseHelper.Update(monument);
 
             return await Task.FromResult(true);
         }
 
         public async Task<bool> DeleteMonumentAsync(Monument monument)
         {
-            try
-            {
                 var _monument = monuments.Where((Monument arg) => arg.Id == monument.Id).FirstOrDefault();
                 monuments.Remove(_monument);
                 DatabaseHelper.Delete(_monument);
                 return await Task.FromResult(true);
-            }catch(Exception e)
-            {
-                Console.WriteLine(e);
-            }
-            return false;
         }
 
         public async Task<Monument> GetMonumentAsync(int id)

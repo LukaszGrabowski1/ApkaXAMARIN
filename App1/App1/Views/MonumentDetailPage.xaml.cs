@@ -32,9 +32,9 @@ namespace App1.Views
             BindingContext = viewModel;
         }
 
-        void EditMonument_Clicked(object sender, EventArgs e)
+        async void EditMonument_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new EditMonumentPage(Monument));
         }
 
         async void DeleteMonument_Clicked(object sender, EventArgs s)
@@ -43,5 +43,7 @@ namespace App1.Views
             MessagingCenter.Send(this, "DeleteMonument", Monument);
             await Navigation.PopAsync();
         }
+
+        
     }
 }

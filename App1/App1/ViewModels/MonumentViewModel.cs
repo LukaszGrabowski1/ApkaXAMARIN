@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
-
+using System.Linq;
 using Xamarin.Forms;
 
 using App1.Models;
@@ -30,15 +30,18 @@ namespace App1.ViewModels
 
             MessagingCenter.Subscribe<MonumentDetailPage, Monument>(this, "DeleteMonument", async (obj, monument) =>
             {
-                try
-                {
                     var _monument = monument as Monument;
                     Monuments.Remove(_monument);
                     await DataStore.DeleteMonumentAsync(_monument);
-                }catch(Exception e)
-                {
-                    Console.WriteLine(e);
-                }
+            });
+
+            MessagingCenter.Subscribe<EditMonumentPage, Monument>(this, "UpdateMonument", async (obj, monument) =>
+            {
+                var _monument = monument as Monument;
+                Monuments.Remove(Monuments.Where((Monument arg) => arg.Id == _monument.Id).FirstOrDefault());
+                Monuments.Add(_monument);
+            
+                await DataStore.UpdateMonumentAsync(_monument);
             });
         }
 

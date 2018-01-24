@@ -21,6 +21,9 @@
     <Compile Update="Views\MainPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\EditMonumentPage.xaml.cs">
+      <DependentUpon>EditMonumentPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\NewMonumentPage.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>NewMonumentPage.xaml</DependentUpon>

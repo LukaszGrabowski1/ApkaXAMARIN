@@ -15,6 +15,7 @@ namespace App1
             using(var conn = new SQLite.SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "monument.db")))
             {
                 conn.CreateTable<T>();
+                
                 if (conn.Insert(data) != 0)
                 {
                     Console.WriteLine("Success");
@@ -43,6 +44,21 @@ namespace App1
             using (var conn = new SQLite.SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "monument.db")))
             {
                 if (conn.Delete(monument) != 0)
+                {
+                    Console.WriteLine("Success");
+                    return true;
+                }
+
+            }
+            Console.WriteLine("FAIL");
+            return false;
+        }
+
+        public static bool Update(Monument monument)
+        {
+            using (var conn = new SQLite.SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "monument.db")))
+            {
+                if (conn.Update(monument) != 0)
                 {
                     Console.WriteLine("Success");
                     return true;
